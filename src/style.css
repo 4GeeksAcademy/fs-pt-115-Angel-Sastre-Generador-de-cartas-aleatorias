@@ -1,89 +1,74 @@
-@import "bootstrap/dist/css/bootstrap.min.css";
-
+/* Pantalla entera centrada */
 body {
-
-    background-image: url("../src/assets/img/tapete.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-
-    
-   
-    
-    
+  background: url("../src/assets/img/tapete.jpg");
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  text-align: center;
+  font-size: 3.5rem;
+}
+/* Contenedor principal con temporizador, carta y botón */
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
+/* Temporizador encima */
+
+.timerNew {
+  font-size: 2rem;
+}
+/* Carta */
 .cardContainer {
-  aspect-ratio: 63 / 88;
-  width: 12vw;
-  background-color: white;
-  border-radius: 1vw;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-sizing: border-box;
-  padding: 1vw;
-  font-family: 'Georgia', serif;
-  transition: transform 0.3s ease;
+  background: white;
+  width: 180px;
+  height: 260px;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
 }
 
-.cardContainer:hover{
-  transform: scale(1.05) translate(-50%, -50%);
-}
-
-.corner {
-    position: absolute;
-    font-size: 1.5vw;
-    line-height: 1.2;
-    text-align: center;
-}
-
-.corner span {
-    font-size: 1.3vw;
-}
-
-.corner.top {
-    top: 0.6vw;
-    left: 0.6vw;
-}
-
-.corner.bottom {
-    bottom: 0.6vw;
-    right: 0.6vw;
-    transform: rotate(180deg);
-}
-
+/* Número de la carta */
 .cardNumber {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 6vw;
+  font-size: 3rem;
+  text-align: center;
+  font-weight: bold;
 }
 
+/* Palos (esquinas) */
+.corner {
+  font-size: 2.3rem;
+  font-weight: bold;
+}
+
+#cardCornerBottom {
+  display: flex;
+  justify-content: end;
+}
+/* Botón */
 .refreshButton {
-  margin-top: 2vh;
-  padding: 0.8em 1.5em;
-  font-size: 1.2vw;
-  background-color: #e63946;
+  padding: 10px 20px;
+  background: #007bff;
   color: white;
+  font-size: 1rem;
   border: none;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  transition: background 0.3s ease;
 }
 
 .refreshButton:hover {
-  background-color: #d62839;
-  transform: translateY(-2px);
-}
-
-.refreshButton:active {
-  transform: scale(0.98);
+  background: #0056b3;
 }
