@@ -7,7 +7,7 @@ const cardNumber = document.getElementById('cardNumber');
 const cardCornerTop = document.getElementById('cardCornerTop');
 const cardCornerBottom = document.getElementById('cardCornerBottom');
 const refreshCardButton = document.getElementById('refreshButton');
-
+const cardContainer = document.getElementById('cardContainer')
 
 const suits = ['♦', '♥', '♠', '♣'];
 const numsToLetters = { 1: 'A', 11: 'J', 12: 'Q', 13: 'K' };
@@ -24,13 +24,25 @@ const generateSuitSymbol = () => {
 
 const getSuitColor = (suit) => (suit === '♦' || suit === '♥') ? 'red' : 'black';
 
+
 const updateCard = () => {
     const cardValue = generateCardValue();
     const suit = generateSuitSymbol();
     const color = getSuitColor(suit);
 
+    let cursor = (suit === '♥') ? 'url("../assets/img/CORAZONES.png"), auto' :
+        (suit === '♦') ? 'url("../assets/img/diamond.svg"), auto' :
+            (suit === '♣') ? 'url("../assets/img/TREBOLES.png"), auto' :
+                (suit === '♠') ? 'url("../assets/img/PICAS.png"), auto' :
+                    'pointer';
+
+
+    cardContainer.style.cursor = cursor;
+
+
     cardNumber.innerText = cardValue;
     cardNumber.style.color = color;
+
 
     cardCornerTop.innerText = suit;
     cardCornerTop.style.color = color;
@@ -50,27 +62,27 @@ let countdownInterval;
 
 
 const updateCardWithTimer = () => {
-  updateCard();        
-  timeLeft = 10;        
-  timer.innerText = timeLeft;
-  timer.className = 'timerNew';
+    updateCard();
+    timeLeft = 10;
+    timer.innerText = timeLeft;
+    timer.className = 'timerNew';
 };
 
 
 const startCountdown = () => {
-  countdownInterval = setInterval(() => {
-    timeLeft--;
-    timer.innerText = timeLeft;
+    countdownInterval = setInterval(() => {
+        timeLeft--;
+        timer.innerText = timeLeft;
 
-    if (timeLeft === 0) {
-      updateCardWithTimer();
-    }
-  }, 1000);
+        if (timeLeft === 0) {
+            updateCardWithTimer();
+        }
+    }, 1000);
 };
 
 
-updateCardWithTimer(); 
-startCountdown();     
+updateCardWithTimer();
+startCountdown();
 
 
 
